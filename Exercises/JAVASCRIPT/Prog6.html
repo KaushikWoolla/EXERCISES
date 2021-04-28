@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Signup form</title>
+</head>
+
+<body>
+    <form name="myForm" onsubmit="return validateForm()">
+        <input type="text" name="name">
+        <input type="password" name="password">
+        <input type="submit" value="Submit">
+
+    </form>
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["name"].value.trim();
+            var password = document.forms["myForm"]["password"].value.trim();
+
+            if (name != "" && password != "") {
+                if (!/\d/.test(name)) {
+                    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+                    if (!format.test(name)) {
+                        if (name.length >= 2 && name.length <= 30) {
+                            alert("Account created");
+                            return true;
+                        } else {
+                            alert("Wrong");
+                            return false;
+                        }
+                    } else {
+                        alert("Wrong");
+                        return false;
+                    }
+
+                } else {
+                    alert("Wrong");
+                    return false;
+                }
+            } else {
+                alert("Wrong");
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
